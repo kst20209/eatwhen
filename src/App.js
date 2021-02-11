@@ -10,8 +10,8 @@ class App extends Component{
       mode:'welcome',
       selected_content_id:2,
       contents:[
-        {id:1, title:'떡볶이', date: '1', std:'30' , img:'1.jpg'},
-        {id:2, title:'곱창', date: '3', std:'30', img:'2.jpg'},
+        {id:1, title:'떡볶이', date: '21', std:'30' , img:'1.jpg'},
+        {id:2, title:'곱창', date: '15', std:'30', img:'2.jpg'},
         {id:3, title:'마라탕', date: '10', std:'30' , img:'3.jpg'},
         {id:4, title:'차슈덮밥', date: '8', std:'30' , img:'4.jpg'}
       ], 
