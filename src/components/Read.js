@@ -7,6 +7,9 @@ class Read extends Component {
       var std = this.props.std;
       var number = (1-(date/std))*100;
       var color = "#A0D468";
+      if (number < 0){
+          number = 0;
+      }
       if (33 <= number && number < 66){
         color= "#FFE650"
       } else if (number < 33) {
