@@ -48,7 +48,7 @@ class App extends Component{
       _article = <Create onSubmit={function(_title, _img, _std, _date){
         this.max_content_id++;
         var _contents=Array.from(this.state.contents);
-        _date = this.dateDiff(_today,_date);
+        _date = this.dateDiff(_date,_today);
         _contents.push({id:this.max_content_id, title:_title, date:_date, std:_std, img:_img});
         this.setState({
           contents:_contents,
