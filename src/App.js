@@ -23,12 +23,13 @@ class App extends Component{
     var list = [];
     while(i < this.state.contents.length){
       var data = this.state.contents[i];
-      list.push(<Read title={data.title} img={data.img}></Read>);
+      list.push(
+        <Read title={data.title} date={data.date} std={data.std} img={data.img}></Read>
+      );
       i++;
     }
     return list;
   }
-  
 
   render(){
     return (
