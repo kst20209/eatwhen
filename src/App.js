@@ -12,24 +12,28 @@ class App extends Component{
       contents:[
         {id:1, title:'떡볶이', date: '1', std:'30' , img:'1.jpg'},
         {id:2, title:'곱창', date: '3', std:'30', img:'2.jpg'},
-        {id:3, title:'마라탕', date: '10', std:'30' , img:'3.jpg'}
+        {id:3, title:'마라탕', date: '10', std:'30' , img:'3.jpg'},
+        {id:4, title:'차슈덮밥', date: '8', std:'30' , img:'4.jpg'}
       ], 
     }
   }
 
   readContent(){
     var i = 0;
+    var list = [];
     while(i < this.state.contents.length){
       var data = this.state.contents[i];
-      <Read title={data.title} img={data.img}></Read>
+      list.push(<Read title={data.title} img={data.img}></Read>);
+      i++;
     }
+    return list;
   }
   
 
   render(){
     return (
       <div className="App">
-        <Read title={this.state.contents[1].title} img={this.state.contents[1].img}></Read>
+        {this.readContent()}
       </div>
     );
   }
