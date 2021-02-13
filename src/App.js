@@ -2,6 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 import Read from './components/Read';
 import Create from './components/Create';
+import Update from './components/Update';
 
 class App extends Component{
   constructor(props){
@@ -9,6 +10,7 @@ class App extends Component{
     this.max_content_id=4;
     this.state={
       mode:'read',
+      selected_id:0,
       contents:[
         {id:1, title:'떡볶이', date: '21', std:'30' , img:'1.jpg'},
         {id:2, title:'곱창', date: '15', std:'30', img:'2.jpg'},
@@ -29,25 +31,47 @@ class App extends Component{
     diff = Math.ceil(diff / (1000 * 3600 * 24));
     return diff; 
   }
-
+/*
   readContent(){
     var i = 0;
     var list = [];
     while(i < this.state.contents.length){
       var data = this.state.contents[i];
+      list.push(<Read title={data.title} date={data.date} std={data.std} img={data.img}></Read>);
       list.push(
-        <Read title={data.title} date={data.date} std={data.std} img={data.img}></Read>
+        <input type="button" value="update" onClick={function(e){
+          this.setState({mode:'update', selected_id:i})
+        }.bind(this)}></input>
       );
       i++;
     }
     return list;
   }
-
+*/
   getContent(){
-    var _article = null;
+    var i = 0;
+    var list = [];
     var _today = new Date();
+    while(i < this.state.contents.length){
+      var data = this.state.contents[i];
+      list.push(<Read title={data.title} date={data.date} std={data.std} img={data.img}></Read>);
+      list.push(
+        <input type="button" value="update" onClick={function(e){
+          this.setState({mode:'update', selected_id:i})
+        }.bind(this)}></input>
+      );
+      if(this.state.mode === 'update'){
+        list.push(<Update data={data} onSubmit={
+          function(_id, _title, _img, _std, _date){
+            var _contents = Array.from(this.state.contents);
+            _date = this.dateDiff(_date,_today);
+            _contents[i] = {id:_id, title:_title, date: _date, std:_std , img:_img}
+          }.bind(this)}></Update>);
+      }
+      i++;
+    }
     if(this.state.mode === 'create'){
-      _article = <Create onSubmit={function(_title, _img, _std, _date){
+      list.push(<Create onSubmit={function(_title, _img, _std, _date){
         this.max_content_id++;
         var _contents=Array.from(this.state.contents);
         _date = this.dateDiff(_date,_today);
@@ -56,19 +80,18 @@ class App extends Component{
           contents:_contents,
           mode:'read',
         });
-      }.bind(this)}></Create>
+      }.bind(this)}></Create>);
     }
-    return _article;
+    return list;
   }
 
   render(){
     return (
       <div className="App">
-        {this.readContent()}
+        {this.getContent()}
         <input type="button" value="create" onClick={function(e){
           this.setState({mode:'create'})
         }.bind(this)}></input>
-        {this.getContent()}
       </div>
     );
   }
