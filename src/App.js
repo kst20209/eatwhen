@@ -61,11 +61,15 @@ class App extends Component{
         }.bind(this)}></input>
       );
       if(this.state.mode === 'update'){
-        list.push(<Update data={data} onSubmit={
-          function(_id, _title, _img, _std, _date){
+        list[i] = (<Update data={data} onSubmit={
+          function(_title, _img, _std, _date){
             var _contents = Array.from(this.state.contents);
             _date = this.dateDiff(_date,_today);
-            _contents[i] = {id:_id, title:_title, date: _date, std:_std , img:_img}
+            _contents[i] = {id:i, title:_title, date: _date, std:_std , img:_img}
+            this.setState({
+              contents:_contents,
+              mode:'read',
+            });
           }.bind(this)}></Update>);
       }
       i++;
