@@ -12,10 +12,10 @@ class App extends Component{
       mode:'read',
       selected_id:0,
       contents:[
-        {title:'떡볶이', date: '21', std:'30' , img:'1.jpg', mode:'read'},
-        {title:'곱창', date: '15', std:'30', img:'2.jpg', mode:'read'},
-        {title:'마라탕', date: '10', std:'30' , img:'3.jpg', mode:'read'},
-        {title:'차슈덮밥', date: '8', std:'30' , img:'4.jpg', mode:'read'}
+        {id:1, title:'떡볶이', date: '21', std:'30' , img:'1.jpg', mode:'read'},
+        {id:2, title:'곱창', date: '15', std:'30', img:'2.jpg', mode:'read'},
+        {id:3, title:'마라탕', date: '10', std:'30' , img:'3.jpg', mode:'read'},
+        {id:4, title:'차슈덮밥', date: '8', std:'30' , img:'4.jpg', mode:'read'}
       ], 
     }
   }
@@ -64,8 +64,12 @@ class App extends Component{
       blocklist.push(<Update data={data} onSubmit={
         function(_title, _img, _std, _date){
           _date = this.dateDiff(_date,_today);
-          data = {title:_title, date: _date, std:_std , img:_img, mode:'read'}
-          this.setState({data:data});
+          data.title = _title;
+          data.img = _img;
+          data.std = _std;
+          data.date = _date;
+          data.mode = 'read';
+          this.setState({data});
         }.bind(this)}></Update>);    
     }
     return blocklist;
