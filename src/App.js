@@ -48,6 +48,14 @@ class App extends Component{
     return list;
   }
 */
+  setID(){
+    var i = 0;
+    while(i < this.state.contents.length){
+      var data = this.state.contents[i];
+      data.id = i+1;
+      i++;
+    }
+  }
 
   block(data){
     var blocklist = [];
@@ -56,9 +64,10 @@ class App extends Component{
     blocklist.push(
       <input type="button" value="update" onClick={function(e){
         data.mode = 'update';
-        this.setState({data:data});
+        this.setState({data});
       }.bind(this)}></input>
     );
+    //update블록
     if(data.mode === 'update'){
       blocklist.pop();
       blocklist.push(<Update data={data} onSubmit={
@@ -70,7 +79,27 @@ class App extends Component{
           data.date = _date;
           data.mode = 'read';
           this.setState({data});
-        }.bind(this)}></Update>);    
+        }.bind(this)}></Update>);
+    }
+
+    blocklist.push(
+      <input type="button" value="delete" onClick={function(e){
+        data.mode = 'delete';
+        this.setState({data});
+      }.bind(this)}></input>
+    );
+    //delete블록
+    if(data.mode === 'delete'){
+      if(window.confirm('이 항목을 삭제하시겠습니까?')){
+        var _contents = Array.from(this.state.contents);
+        _contents.splice(data.id-1,1);
+        data.mode = 'read'
+        this.setState({
+          contents:_contents,
+          data
+        });
+      }
+      alert('제거되었습니다.');
     }
     return blocklist;
   }
@@ -102,6 +131,7 @@ class App extends Component{
   render(){
     return (
       <div className="App">
+        {this.setID()}
         {this.getContent()}
         <input type="button" value="create" onClick={function(e){
           this.setState({mode:'create'})

@@ -39,6 +39,8 @@ class Update extends Component {
               <input type="submit"></input>
             </p>
           </form>
+          <br></br>
+          <hr></hr>
         </div>
       );
     }
