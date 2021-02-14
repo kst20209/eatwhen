@@ -12,10 +12,10 @@ class App extends Component{
       mode:'read',
       selected_id:0,
       contents:[
-        {id:1, title:'떡볶이', date: '21', std:'30' , img:'1.jpg'},
-        {id:2, title:'곱창', date: '15', std:'30', img:'2.jpg'},
-        {id:3, title:'마라탕', date: '10', std:'30' , img:'3.jpg'},
-        {id:4, title:'차슈덮밥', date: '8', std:'30' , img:'4.jpg'}
+        {title:'떡볶이', date: '21', std:'30' , img:'1.jpg', mode:'read'},
+        {title:'곱창', date: '15', std:'30', img:'2.jpg', mode:'read'},
+        {title:'마라탕', date: '10', std:'30' , img:'3.jpg', mode:'read'},
+        {title:'차슈덮밥', date: '8', std:'30' , img:'4.jpg', mode:'read'}
       ], 
     }
   }
@@ -48,30 +48,36 @@ class App extends Component{
     return list;
   }
 */
+
+  block(data){
+    var blocklist = [];
+    var _today = new Date();
+    blocklist.push(<Read title={data.title} date={data.date} std={data.std} img={data.img}></Read>);
+    blocklist.push(
+      <input type="button" value="update" onClick={function(e){
+        data.mode = 'update';
+        this.setState({data:data});
+      }.bind(this)}></input>
+    );
+    if(data.mode === 'update'){
+      blocklist.pop();
+      blocklist.push(<Update data={data} onSubmit={
+        function(_title, _img, _std, _date){
+          _date = this.dateDiff(_date,_today);
+          data = {title:_title, date: _date, std:_std , img:_img, mode:'read'}
+          this.setState({data:data});
+        }.bind(this)}></Update>);    
+    }
+    return blocklist;
+  }
+
   getContent(){
     var i = 0;
     var list = [];
     var _today = new Date();
     while(i < this.state.contents.length){
       var data = this.state.contents[i];
-      list.push(<Read title={data.title} date={data.date} std={data.std} img={data.img}></Read>);
-      list.push(
-        <input type="button" value="update" onClick={function(e){
-          this.setState({mode:'update', selected_id:i})
-        }.bind(this)}></input>
-      );
-      if(this.state.mode === 'update'){
-        list[i] = (<Update data={data} onSubmit={
-          function(_title, _img, _std, _date){
-            var _contents = Array.from(this.state.contents);
-            _date = this.dateDiff(_date,_today);
-            _contents[i] = {id:i, title:_title, date: _date, std:_std , img:_img}
-            this.setState({
-              contents:_contents,
-              mode:'read',
-            });
-          }.bind(this)}></Update>);
-      }
+      list.push(this.block(data));
       i++;
     }
     if(this.state.mode === 'create'){
