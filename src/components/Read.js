@@ -27,7 +27,6 @@ class Read extends Component {
                 barColor = {color}
                 seperatorColor = "gray"
             />
-            <hr></hr>
         </div>
       );
     }

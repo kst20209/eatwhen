@@ -27,27 +27,11 @@ class App extends Component{
     diffDate_2 =new Date(diffDate_2.getFullYear(), diffDate_2.getMonth(), diffDate_2.getDate());
     console.log(diffDate_1);
     console.log(diffDate_2);
-    var diff = Math.abs(diffDate_2.getTime() - diffDate_1.getTime());
+    var diff = diffDate_2.getTime() - diffDate_1.getTime();
     diff = Math.ceil(diff / (1000 * 3600 * 24));
     return diff; 
   }
-/*
-  readContent(){
-    var i = 0;
-    var list = [];
-    while(i < this.state.contents.length){
-      var data = this.state.contents[i];
-      list.push(<Read title={data.title} date={data.date} std={data.std} img={data.img}></Read>);
-      list.push(
-        <input type="button" value="update" onClick={function(e){
-          this.setState({mode:'update', selected_id:i})
-        }.bind(this)}></input>
-      );
-      i++;
-    }
-    return list;
-  }
-*/
+
   setID(){
     var i = 0;
     while(i < this.state.contents.length){
@@ -72,11 +56,13 @@ class App extends Component{
       blocklist.pop();
       blocklist.push(<Update data={data} onSubmit={
         function(_title, _img, _std, _date){
-          _date = this.dateDiff(_date,_today);
           data.title = _title;
           data.img = _img;
           data.std = _std;
-          data.date = _date;
+          data.date = this.dateDiff(_date,_today);
+          if(Number.isNaN(data.date)){
+            data.date = 0;
+          }
           data.mode = 'read';
           this.setState({data});
         }.bind(this)}></Update>);
