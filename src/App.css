@@ -2,6 +2,11 @@
   text-align: center;
   width: 30%;
   margin: auto;
+  margin-top: 0.5rem;
+}
+
+.bar{
+  border: 1px solid red;
 }
 
 .App-logo {

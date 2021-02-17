@@ -110,6 +110,9 @@ class App extends Component{
           mode:'read',
         });
       }.bind(this)}></Create>);
+      list.push(<input type="submit" value="취소" onClick={function(e){
+        this.setState({mode:'read'});
+      }.bind(this)}></input>);
     }
     return list;
   }
@@ -120,9 +123,9 @@ class App extends Component{
         {this.setID()}
         {this.getContent()}
         <input type="button" value="create" onClick={function(e){
-          this.setState({mode:'create'})
+            this.setState({mode:'create'})
         }.bind(this)}></input>
-      </div>
+      </div>    
     );
   }
 }

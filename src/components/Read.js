@@ -7,26 +7,31 @@ class Read extends Component {
       var std = this.props.std;
       var number = (1-(date/std))*100;
       var color = "#A0D468";
+      var level = "정상";
       if (number < 0){
           number = 0;
+          level = "비상";
       }
       if (33 <= number && number < 66){
-        color= "#FFE650"
+        color= "#FFE650";
+        level = "경고";
       } else if (number < 33) {
-        color = "#FF013D"
+        color = "#FF013D";
+        level = "위험";
       }
+
       return(
         <div>
             {this.props.img}
             {this.props.title}
-            <span>마지막으로 먹은게 {date}일 전...</span>
+            <span>현재 {this.props.title} 수치: {level}</span>
             <Bar
-                labels={[0,33,66,100]}
-                labelColor = "null"
+                class="bar"
+                labels={[]}
                 progress = {number}
                 barColor = {color}
-                seperatorColor = "gray"
             />
+            <span>마지막으로 먹은게 {date}일 전...</span>
         </div>
       );
     }
