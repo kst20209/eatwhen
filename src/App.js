@@ -38,6 +38,7 @@ class App extends Component{
     while(i < this.state.contents.length){
       var data = this.state.contents[i];
       data.id = i+1;
+      data.key = i+1;
       i++;
     }
   }
@@ -47,7 +48,7 @@ class App extends Component{
     var _today = new Date();
     blocklist.push(<Read title={data.title} date={data.date} std={data.std} img={data.img}></Read>);
     blocklist.push(
-      <input type="button" value="update" onClick={function(e){
+      <input type="image" src="update.png" alt="수정" width="25" height="25" onClick={function(e){
         data.mode = 'update';
         this.setState({data});
       }.bind(this)}></input>
@@ -70,7 +71,7 @@ class App extends Component{
     }
 
     blocklist.push(
-      <input type="button" value="delete" onClick={function(e){
+      <input type="image" src="delete.png" alt="삭제" width="25" height="25" onClick={function(e){
         data.mode = 'delete';
         this.setState({data});
       }.bind(this)}></input>
@@ -123,7 +124,8 @@ class App extends Component{
       <div className="App">
         {this.setID()}
         {this.getContent()}
-        <input type="button" value="create" onClick={function(e){
+        <br></br>
+        <input type="image" src="create.png" alt="추가" width="25" height="25" onClick={function(e){
             this.setState({mode:'create'})
         }.bind(this)}></input>
       </div>    

@@ -9,6 +9,11 @@
   border: 1px solid red;
 }
 
+#update_button{
+  width: 1rem;
+  height: 1rem;
+}
+
 .progress{
   margin-left: 0.3rem;
   margin-right: 0.3rem;

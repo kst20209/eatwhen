@@ -26,11 +26,11 @@ class Read extends Component {
       number = Math.round(number);
 
       return(
-        <div class='read'>
+        <div className='read'>
             {this.props.img}
             {this.props.title}
             <span>현재 {this.props.title} 수치: {level}</span>
-            <ProgressBar class="progress" now={number} label={`${number}%`} variant={color}/>
+            <ProgressBar className="progress" now={number} label={`${number}%`} variant={color}/>
             <span>마지막으로 먹은게 {date}일 전...</span>
         </div>
       );
