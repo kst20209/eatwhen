@@ -123,6 +123,10 @@ class App extends Component{
   render(){
     return (
       <div className="App">
+        <header>
+          <h2>당신의 ◯◯ 수치는?</h2>
+          <hr></hr>
+        </header>
         {this.setID()}
         {this.getContent()}
         <input type="image" src="create.png" alt="추가" width="25" height="25" onClick={function(e){

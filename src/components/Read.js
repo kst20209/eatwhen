@@ -35,7 +35,7 @@ class Read extends Component {
             <ProgressBar className="progress" now={number} label={`${number}%`} variant={color} striped={true} animated={true}/>
             <span id="final_date">마지막으로 먹은게 {this.props.date}일 전</span>
           </div>
-          <div>
+          <div id="buttons">
             <input type="image" src="update.png" alt="수정" width="25" height="25" onClick={function(e){
               this.props.onClick('update');
             }.bind(this)}></input>
