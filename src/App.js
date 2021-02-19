@@ -46,13 +46,12 @@ class App extends Component{
   block(data){
     var blocklist = [];
     var _today = new Date();
-    blocklist.push(<Read title={data.title} date={data.date} std={data.std} img={data.img}></Read>);
-    blocklist.push(
-      <input type="image" src="update.png" alt="수정" width="25" height="25" onClick={function(e){
-        data.mode = 'update';
-        this.setState({data});
-      }.bind(this)}></input>
-    );
+    blocklist.push(<Read title={data.title} date={data.date} std={data.std} img={data.img} 
+      onClick={
+        function(_mode){
+          data.mode=_mode;
+          this.setState({data});
+    }.bind(this)}></Read>);
     //update블록
     if(data.mode === 'update'){
       blocklist.pop();
@@ -74,13 +73,6 @@ class App extends Component{
             this.setState({data});
         }.bind(this)}></Update>);
     }
-
-    blocklist.push(
-      <input type="image" src="delete.png" alt="삭제" width="25" height="25" onClick={function(e){
-        data.mode = 'delete';
-        this.setState({data});
-      }.bind(this)}></input>
-    );
     //delete블록
     if(data.mode === 'delete'){
       if(window.confirm('이 항목을 삭제하시겠습니까?')){

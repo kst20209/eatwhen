@@ -27,10 +27,22 @@ class Read extends Component {
 
       return(
         <div className='read'>
+          <div>
             <img id="food" src="1.jpg" alt="음식 사진" width="75" height="75"></img>
-            <span>현재 {this.props.title} 수치: {level}</span>
+          </div>
+          <div id="present_state">
+            <span id="read_title">현재 <strong>{this.props.title}</strong> 수치: {level}</span>
             <ProgressBar className="progress" now={number} label={`${number}%`} variant={color}/>
-            <span id="final_date">마지막으로 먹은게 {date}일 전</span>
+            <span id="final_date">마지막으로 먹은게 {this.props.date}일 전</span>
+          </div>
+          <div>
+            <input type="image" src="update.png" alt="수정" width="25" height="25" onClick={function(e){
+              this.props.onClick('update');
+            }.bind(this)}></input>
+            <input type="image" src="delete.png" alt="삭제" width="25" height="25" onClick={function(e){
+              this.props.onClick('delete');
+            }.bind(this)}></input>
+          </div>
         </div>
       );
     }
