@@ -67,6 +67,11 @@ class App extends Component{
           }
           data.mode = 'read';
           this.setState({data});
+        }.bind(this)}
+        onClick={
+          function(){
+            data.mode='read';
+            this.setState({data});
         }.bind(this)}></Update>);
     }
 
@@ -86,8 +91,11 @@ class App extends Component{
           contents:_contents,
           data
         });
+        alert('제거되었습니다.');
+      } else{
+        data.mode = 'read'
+        this.setState({data});
       }
-      alert('제거되었습니다.');
     }
     return blocklist;
   }

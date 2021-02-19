@@ -10,6 +10,7 @@ class Update extends Component {
         img:this.props.data.img,
         std:this.props.data.std,
         date:this.props.data.date,
+        mode:this.props.data.mode,
       }
       this.inputFormHandler = this.inputFormHandler.bind(this)
     }
@@ -21,8 +22,8 @@ class Update extends Component {
 
     render(){
       return(
-        <div>
-          <h2>Update</h2>
+        <div className='update'>
+          <h4>수정</h4>
           <form action="/create-process" method="post"
             onSubmit={function(e){
               e.preventDefault();
@@ -38,6 +39,9 @@ class Update extends Component {
             </p>
             <p>
               <input type="submit"></input>
+              <input type="button" value="취소" onClick={function(e){
+                this.props.onClick();
+              }.bind(this)}></input>
             </p>
           </form>
         </div>
