@@ -46,7 +46,7 @@ class App extends Component{
   block(data){
     var blocklist = [];
     var _today = new Date();
-    blocklist.push(<Read title={data.title} date={data.date} std={data.std} img={data.img} 
+    blocklist.push(<Read title={data.title} date={data.date} std={data.std} img={data.img}
       onClick={
         function(_mode){
           data.mode=_mode;
@@ -61,7 +61,7 @@ class App extends Component{
           data.img = _img;
           data.std = _std;
           data.date = this.dateDiff(_date,_today);
-          if(Number.isNaN(data.date)){
+          if(Number.isNaN(data.date) || data.date>365){
             data.date = 0;
           }
           data.mode = 'read';
@@ -106,6 +106,9 @@ class App extends Component{
         this.max_content_id++;
         var _contents=Array.from(this.state.contents);
         _date = this.dateDiff(_date,_today);
+        if(Number.isNaN(data.date) || data.date>365){
+          data.date = 0;
+        }
         _contents.push({id:this.max_content_id, title:_title, date:_date, std:_std, img:_img});
         this.setState({
           contents:_contents,

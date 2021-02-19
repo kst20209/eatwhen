@@ -21,6 +21,13 @@ class Read extends Component {
         //color = "#FF013D";
         color = "danger";
         level = "위험";
+      } else if (number > 100) {
+        number = 100;
+        level = "곧 먹을 예정인가요?"
+      }
+
+      if(Number.isNaN(date) || date>365){
+        number = 100;
       }
 
       number = Math.round(number);

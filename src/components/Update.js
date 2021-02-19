@@ -35,7 +35,7 @@ class Update extends Component {
               <input type="text" name="title" placeholder="이름" value={this.state.title} onChange={this.inputFormHandler}></input>
               <input type="text" name="img" placeholder="이미지" value={this.state.img} onChange={this.inputFormHandler}></input>
               <input type="number" min="1" name="std" placeholder="기준 시간" value={this.state.std} onChange={this.inputFormHandler}></input>
-              <input type="date" name="date" placeholder="시작 날짜" value={new Date().toISOString().substring(0,10)} onChange={this.inputFormHandler}></input>
+              <input type="date" name="date" placeholder="시작 날짜" value={this.state.date} onChange={this.inputFormHandler}></input>
             </p>
             <p>
               <input type="submit"></input>
