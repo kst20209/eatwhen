@@ -111,10 +111,11 @@ class App extends Component{
           contents:_contents,
           mode:'read',
         });
+      }.bind(this)}
+      onClick={
+        function(_mode){
+          this.setState({mode:_mode});
       }.bind(this)}></Create>);
-      list.push(<input type="submit" value="취소" onClick={function(e){
-        this.setState({mode:'read'});
-      }.bind(this)}></input>);
     }
     return list;
   }

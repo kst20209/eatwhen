@@ -18,6 +18,9 @@ class Create extends Component {
             </p>
             <p>
               <input type="submit"></input>
+              <input type="button" value="취소" onClick={function(e){
+                this.props.onClick('read');
+              }.bind(this)}></input>
             </p>
           </form>
         </div>
