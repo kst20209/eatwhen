@@ -28,7 +28,7 @@ class Read extends Component {
       return(
         <div className='read'>
           <div>
-            <img id="food" src="1.jpg" alt="음식 사진" width="75" height="75"></img>
+            <img id="food" src={this.props.img} alt="음식 사진" width="75" height="75"></img>
           </div>
           <div id="present_state">
             <span id="read_title">현재 <strong>{this.props.title}</strong> 수치: {level}</span>
