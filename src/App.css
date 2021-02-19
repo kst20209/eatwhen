@@ -6,20 +6,21 @@
 }
 
 .read{
-  border: 1px solid red;
+  height: 100px;
 }
 
-#update_button{
-  width: 1rem;
-  height: 1rem;
+#food{
+  margin: 0.2rem;
+  float: left;
+}
+
+#final_date{
+  float: left;
 }
 
 .progress{
   margin-left: 0.3rem;
   margin-right: 0.3rem;
   background-color: red;
-}
-
-.progress-color{
-  background-color: red;
+  display: inline;
 }

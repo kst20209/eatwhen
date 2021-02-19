@@ -27,11 +27,10 @@ class Read extends Component {
 
       return(
         <div className='read'>
-            {this.props.img}
-            {this.props.title}
+            <img id="food" src="1.jpg" alt="음식 사진" width="75" height="75"></img>
             <span>현재 {this.props.title} 수치: {level}</span>
             <ProgressBar className="progress" now={number} label={`${number}%`} variant={color}/>
-            <span>마지막으로 먹은게 {date}일 전...</span>
+            <span id="final_date">마지막으로 먹은게 {date}일 전</span>
         </div>
       );
     }
