@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Read from './components/Read';
 import Create from './components/Create';
 import Update from './components/Update';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component{
   constructor(props){

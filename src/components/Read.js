@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Bar from 'react-meter-bar';
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 class Read extends Component {
     render(){
@@ -19,18 +19,17 @@ class Read extends Component {
         color = "#FF013D";
         level = "위험";
       }
+      
+      if (!color){
+        alert('Hello!');
+      }
 
       return(
-        <div>
+        <div class='read'>
             {this.props.img}
             {this.props.title}
             <span>현재 {this.props.title} 수치: {level}</span>
-            <Bar
-                class="bar"
-                labels={[]}
-                progress = {number}
-                barColor = {color}
-            />
+            <ProgressBar now={number} />
             <span>마지막으로 먹은게 {date}일 전...</span>
         </div>
       );
