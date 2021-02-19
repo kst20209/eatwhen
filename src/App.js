@@ -125,7 +125,6 @@ class App extends Component{
       <div className="App">
         {this.setID()}
         {this.getContent()}
-        <br></br>
         <input type="image" src="create.png" alt="추가" width="25" height="25" onClick={function(e){
             this.setState({mode:'create'})
         }.bind(this)}></input>

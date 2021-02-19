@@ -32,7 +32,7 @@ class Read extends Component {
           </div>
           <div id="present_state">
             <span id="read_title">현재 <strong>{this.props.title}</strong> 수치: {level}</span>
-            <ProgressBar className="progress" now={number} label={`${number}%`} variant={color}/>
+            <ProgressBar className="progress" now={number} label={`${number}%`} variant={color} striped={true} animated={true}/>
             <span id="final_date">마지막으로 먹은게 {this.props.date}일 전</span>
           </div>
           <div>
