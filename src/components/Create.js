@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Dropdown from 'react-bootstrap/Dropdown'
 
 class Create extends Component {
     render(){
@@ -12,7 +13,16 @@ class Create extends Component {
           >
             <p>
               <input type="text" name="title" placeholder="이름"></input>
-              <input type="text" name="img" placeholder="이미지"></input>
+              <Dropdown>
+                <Dropdown.Toggle id="dropdown-basic">
+                  image
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item>1.jpg</Dropdown.Item>
+                  <Dropdown.Item>2.jpg</Dropdown.Item>
+                  <Dropdown.Item>3.jpg</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
               <input type="number" min="1" name="std" placeholder="기준 시간"></input>
               <input type="date" name="date" placeholder="시작 날짜"></input>
             </p>
