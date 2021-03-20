@@ -119,7 +119,7 @@ class App extends Component{
         function(_mode){
           this.setState({mode:_mode});
       }.bind(this)}></Create>);
-    }
+    } 
     return list;
   }
 

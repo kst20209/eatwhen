@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown'
+import DropdownButton from 'react-bootstrap/DropdownButton'
 
 class Create extends Component {
     render(){
@@ -8,21 +9,20 @@ class Create extends Component {
           <form action="/create-process" method="post"
             onSubmit={function(e){
               e.preventDefault();
-              this.props.onSubmit(e.target.title.value, e.target.img.value, e.target.std.value, e.target.date.value);
+              this.props.onSubmit(e.target.title.value, e.target.image.value, e.target.std.value, e.target.date.value);
             }.bind(this)}
           >
             <p>
               <input type="text" name="title" placeholder="이름"></input>
-              <Dropdown>
-                <Dropdown.Toggle id="dropdown-basic">
-                  image
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item>1.jpg</Dropdown.Item>
-                  <Dropdown.Item>2.jpg</Dropdown.Item>
-                  <Dropdown.Item>3.jpg</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+                <DropdownButton
+                  onSelect={function(e){
+                    console.log(e);
+                  }.bind(this)}
+                >
+                  <Dropdown.Item eventKey="img1">1.jpg</Dropdown.Item>
+                  <Dropdown.Item eventKey="img2">2.jpg</Dropdown.Item>
+                  <Dropdown.Item eventKey="img3">3.jpg</Dropdown.Item>
+                </DropdownButton>
               <input type="number" min="1" name="std" placeholder="기준 시간"></input>
               <input type="date" name="date" placeholder="시작 날짜"></input>
             </p>
